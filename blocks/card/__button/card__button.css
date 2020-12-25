@@ -1,0 +1,18 @@
+.card__button{
+    border: 1px solid #ffffff;
+    box-sizing: border-box;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-self: center;
+    align-items: center; 
+    height: 19px;
+}
+.card__button:hover{
+    opacity: 0.5;
+}
+.card__button:active{
+    opacity: 1;
+    background-image: url(../../../images/Union.png);
+    object-fit: contain;
+    object-position: 100%;
+}

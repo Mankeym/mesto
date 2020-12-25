@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesto</title>
+    <link rel="stylesheet" href="./pages/index.css">
+</head>
+<body>
+    <div class="page">
+    <header class="header">
+        <img src="./images/Vector.png" class="header__logo">
+        <hr class="header__line">
+    </header>
+    <main>
+        <section class="profile">
+            <div class="profile__page">
+                <img src="./images/image.png" class="profile__logo">
+                <div class="profile__info">
+                    <h2 class="section__title" id="heading">Жак-Ив Кусто
+                        <button class="profile__rectangle" href="#">
+                            <img src="./images/pen.png">
+                        </button>
+                    </h2>
+                    <h3 class="section__subtitle" id="quote">Исследователь океана</h3>
+                </div>
+            </div>
+            <button class="profile__button">
+                <img src="./images/krest.png">
+            </button>
+        </section>
+        <section class="cards">
+            <div class="card">
+                <img src="./images/karachay.png" class="card__logo">
+                <div>
+                    <h3 class="card__title">
+                        Карачаевск
+                        <a class="card__button">
+                            <img class="card__like" src="./images/hearth.png">
+                        </a>
+                    </h3>
+                </div>
+            </div>
+            <div class="card">
+                <img src="./images/elbrus.png" class="card__logo">
+                <div>
+                    <h3 class="card__title">
+                        Гора Эльбрус
+                        <a class="card__button">
+                            <img src="./images/hearth.png">
+                        </a>
+                    </h3>
+                </div>
+            </div>
+            <div class="card">
+                <img src="./images/dombay.png" class="card__logo">
+                <div>
+                    <h3 class="card__title">
+                        Домбай
+                        <a class="card__button">
+                            <img src="./images/hearth.png">
+                        </a>
+                    </h3>
+                </div>
+            </div>
+            <div class="card">
+                <img src="./images/elbrus.png" class="card__logo">
+                <div>
+                    <h3 class="card__title">
+                        Гора Эльбрус
+                        <a class="card__button">
+                            <img src="./images/hearth.png">
+                        </a>
+                    </h3>
+                </div>
+            </div>
+            <div class="card">
+                <img src="./images/dombay.png" class="card__logo">
+                <div>
+                    <h3 class="card__title">
+                        Домбай
+                        <a class="card__button">
+                            <img src="./images/hearth.png">
+                        </a>
+                    </h3>
+                </div>
+            </div>
+            <div class="card">
+                <img src="./images/karachay.png" class="card__logo">
+                <div>
+                    <h3 class="card__title">
+                        Карачаевск
+                        <a class="card__button">
+                            <img src="./images/hearth.png">
+                        </a>
+                    </h3>
+                </div>
+            </div>
+        </section>
+    
+    </main>
+    <footer class="footer">
+        <h2 class="footer__copyright">© 2020 Mesto Russia</h2>
+    </footer>
+    <section class="overlay">
+        <div class="popup">
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <form class="popup__form">
+            <input type="text" class="popup__input popup__input_name" value="Жак-Ив Кусто" name="heading" id="heading">
+            <hr class="popup__line">
+            <input type="text" class="popup__input popup__input_job" value="Исследователь окена">
+            <hr class="popup__line">
+            <input type="submit" class="popup__submit" value="Сохранить">
+            </form>
+        </div>
+        <img class="overlay__image" src="./images/Close.svg">
+    </section>
+    </div>
+<script src="./script/index.js"></script>
+</body>
+</html>

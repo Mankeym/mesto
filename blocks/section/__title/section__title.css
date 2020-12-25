@@ -1,0 +1,20 @@
+.section__title{
+    margin: 0;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 48px;
+    color: hsl(0, 0%, 100%);
+    display: flex;
+    width: 336px;
+    position: relative;
+    text-align: center;
+}
+@media screen and (max-width: 910px){
+    .section__title{
+        width: 217px;
+        font-size: 27px;
+        line-height: 33px;
+    }
+}
