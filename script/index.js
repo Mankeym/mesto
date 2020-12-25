@@ -26,8 +26,8 @@ function handleFormSubmit (evt) {
     // Находим поля формы в DOM
     let nameInput = document.querySelector('.popup__input_name')
     let jobInput = document.querySelector('.popup__input_job')
-    let name = document.querySelector('.section__title')
-    let job = document.querySelector('.section__subtitle')
+    let name = document.querySelector('.profile__title')
+    let job = document.querySelector('.profile__subtitle')
     console.log(nameInput.value)
     // Получите значение полей из свойства value
     name.textContent = nameInput.value
