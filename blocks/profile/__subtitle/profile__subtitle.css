@@ -1,14 +1,15 @@
 .profile__subtitle{
     margin: 0;
     max-width: 336px;
-    font-family: 'Inter';
+    font-family: 'Inter', "Arial ", sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
     line-height: 22px;
     color: #FFFFFF;
-    text-align: center;
     margin-top: 16px;
+    text-align: none;
+    max-width: 336px;
 }
 @media screen and (max-width: 910px){
     .profile__subtitle{
@@ -16,5 +17,9 @@
         font-size: 14px;
         line-height: 17px;
         text-align: center;
+        max-width: 282px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
     }
 }

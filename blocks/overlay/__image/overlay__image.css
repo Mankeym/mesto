@@ -1,18 +1,4 @@
 .overlay__image{
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    margin: 0;
-    top: 146.72px;
-    left: 846.72px;
-}
-.overlay__image:hover{
-    opacity: 0.6;
-}
-@media screen and (max-width: 910px){
-    .overlay__image{
-        top: 72.62px;
-        left: 264.62px;
-        margin-right: 18.62px;
-    }
+    background-color: black;
+    max-width: 40px;
 }
