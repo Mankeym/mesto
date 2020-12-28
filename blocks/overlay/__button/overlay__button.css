@@ -6,6 +6,7 @@
     right: -30px;
     padding: 0;
     cursor: pointer;
+    background-color: transparent;
     border: 0;
 }
 .overlay__button:hover{
@@ -13,7 +14,9 @@
 }
 @media screen and (max-width: 910px){
     .overlay__button{
-        top: -50px;
+        top: -35px;
         right: 0;
+        width: 26px;
+        height: 26px;
     }
 }

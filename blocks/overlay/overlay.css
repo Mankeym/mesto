@@ -7,7 +7,7 @@
     display: none;
     justify-content: center;
     box-sizing: border-box;
-    align-items: flex-start;
+    align-items: center;
     background: rgba(0, 0, 0, .5);
     flex-direction: column;
 }

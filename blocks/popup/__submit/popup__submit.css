@@ -22,5 +22,7 @@
     .popup__submit{
         margin-left: 22px;
         max-width: 236px;
+        font-size: 14px;
+        line-height: 17px;
     }
 }
