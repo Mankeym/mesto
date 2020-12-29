@@ -5,7 +5,7 @@ let jobInput = document.querySelector('.popup__input_type_job')
 let name = document.querySelector('.profile__title')
 let job = document.querySelector('.profile__subtitle')
 let closeOverlay = document.querySelector('.overlay__button')
-let togglePopup = () => { 
+let togglePopup = (nameInput , jobInput) => { 
     overlay.classList.toggle('overlay_active')
 }
 openButton.addEventListener('click', togglePopup)
