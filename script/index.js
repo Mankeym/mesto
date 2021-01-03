@@ -5,11 +5,19 @@ let jobInput = document.querySelector('.popup__input_type_job')
 let name = document.querySelector('.profile__title')
 let job = document.querySelector('.profile__subtitle')
 let closeOverlay = document.querySelector('.overlay__button')
-let togglePopup = (nameInput , jobInput) => { 
+let togglePopup = () => { 
     overlay.classList.toggle('overlay_active')
 }
-openButton.addEventListener('click', togglePopup)
-closeOverlay.addEventListener('click', togglePopup)
+let togglePopupOpen = () => {
+    overlay.classList.toggle('overlay_active')
+    nameInput.textContent = name.value
+    jobInput.textContent = job.value
+}
+let togglePopupClose = () => {
+    overlay.classList.toggle('overlay_active')
+}
+openButton.addEventListener('click', togglePopupOpen)
+closeOverlay.addEventListener('click', togglePopupClose)
 overlay.addEventListener('mouseup', (event) => {
     if (event.target === event.currentTarget) {
         togglePopup()
@@ -29,7 +37,7 @@ function handleFormSubmit (evt) {
     name.textContent = nameInput.value
     job.textContent = jobInput.value
     // Выберите элементы, куда должны быть вставлены значения полей
-    togglePopup()
+    togglePopupClose()
     // Вставьте новые значения с помощью textContent
 }
 // Прикрепляем обработчик к форме:
