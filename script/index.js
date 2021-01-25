@@ -10,14 +10,11 @@ let togglePopup = () => {
 }
 let togglePopupOpen = () => {
     overlay.classList.toggle('overlay_active')
-    nameInput.textContent = name.value
-    jobInput.textContent = job.value
-}
-let togglePopupClose = () => {
-    overlay.classList.toggle('overlay_active')
+    nameInput.value = name.textContent
+    jobInput.value = job.textContent
 }
 openButton.addEventListener('click', togglePopupOpen)
-closeOverlay.addEventListener('click', togglePopupClose)
+closeOverlay.addEventListener('click',togglePopup)
 overlay.addEventListener('mouseup', (event) => {
     if (event.target === event.currentTarget) {
         togglePopup()
@@ -37,7 +34,7 @@ function handleFormSubmit (evt) {
     name.textContent = nameInput.value
     job.textContent = jobInput.value
     // Выберите элементы, куда должны быть вставлены значения полей
-    togglePopupClose()
+    togglePopupOpen()
     // Вставьте новые значения с помощью textContent
 }
 // Прикрепляем обработчик к форме:
