@@ -5,15 +5,11 @@ let jobInput = document.querySelector('.popup__input_type_job')
 let name = document.querySelector('.profile__title')
 let job = document.querySelector('.profile__subtitle')
 let closeOverlay = document.querySelector('.overlay__button')
-let togglePopup = () => { 
-    overlay.classList.toggle('overlay_active')
-}
 let togglePopupOpen = () => {
-    togglePopup()
+    overlay.classList.toggle('overlay_active')
     if(overlay.classList.contains('overlay_active')){
         nameInput.value = name.textContent
         jobInput.value = job.textContent
-        console.log(overlay.classList.contains('overlay_active'))
     }
 }
 openButton.addEventListener('click', togglePopupOpen)
