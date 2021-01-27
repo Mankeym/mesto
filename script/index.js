@@ -13,10 +13,10 @@ let togglePopupOpen = () => {
     }
 }
 openButton.addEventListener('click', togglePopupOpen)
-closeOverlay.addEventListener('click',togglePopup)
+closeOverlay.addEventListener('click',togglePopupOpen)
 overlay.addEventListener('mouseup', (event) => {
     if (event.target === event.currentTarget) {
-        togglePopup()
+        togglePopupOpen()
     }
 })
 
