@@ -10,8 +10,10 @@ let togglePopup = () => {
 }
 let togglePopupOpen = () => {
     togglePopup()
-    nameInput.value = name.textContent
-    jobInput.value = job.textContent
+    if(overlay.classList.contains('overlay_active'){
+        nameInput.value = name.textContent
+        jobInput.value = job.textContent
+    }
 }
 openButton.addEventListener('click', togglePopupOpen)
 closeOverlay.addEventListener('click',togglePopup)
