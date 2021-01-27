@@ -10,7 +10,7 @@ let togglePopup = () => {
 }
 let togglePopupOpen = () => {
     togglePopup()
-    if(overlay.classList.contains('overlay_active'){
+    if(overlay.classList.contains('overlay_active')){
         nameInput.value = name.textContent
         jobInput.value = job.textContent
     }
