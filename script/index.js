@@ -9,7 +9,7 @@ let togglePopup = () => {
     overlay.classList.toggle('overlay_active')
 }
 let togglePopupOpen = () => {
-    overlay.classList.toggle('overlay_active')
+    togglePopup()
     nameInput.value = name.textContent
     jobInput.value = job.textContent
 }
