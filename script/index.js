@@ -13,6 +13,7 @@ let togglePopupOpen = () => {
     if(overlay.classList.contains('overlay_active')){
         nameInput.value = name.textContent
         jobInput.value = job.textContent
+        console.log(overlay.classList.contains('overlay_active'))
     }
 }
 openButton.addEventListener('click', togglePopupOpen)
