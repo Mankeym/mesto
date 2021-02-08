@@ -5,6 +5,9 @@ let jobInput = document.querySelector('.popup__input_type_job')
 let name = document.querySelector('.profile__title')
 let job = document.querySelector('.profile__subtitle')
 let closeOverlay = document.querySelector('.overlay__button')
+let formElement = document.querySelector('.popup__form')
+let picture = document.querySelector('.picture')
+let OpenPicture = document.querySelector('.profile__button')
 let togglePopupOpen = () => {
     overlay.classList.toggle('overlay_active')
     if(overlay.classList.contains('overlay_active')){
@@ -19,8 +22,6 @@ overlay.addEventListener('mouseup', (event) => {
         togglePopupOpen()
     }
 })
-
-let formElement = document.querySelector('.popup__form')
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
@@ -39,3 +40,12 @@ function handleFormSubmit (evt) {
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', handleFormSubmit)
+let togglePictureOpen = () => {
+    picture.classList.toggle('picture_active')
+}
+OpenPicture.addEventListener('click', togglePictureOpen)
+picture.addEventListener('mouseup', (event) => {
+    if (event.target === event.currentTarget) {
+        togglePictureOpen()
+    }
+})
