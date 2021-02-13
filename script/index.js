@@ -18,7 +18,6 @@ let jobPicture = document.querySelector('.picture__popup__input_type_job')
 const directorsList = document.querySelector('.cards');
 let templateEl = document.querySelector('.card-template');
 let LikeBlack = document.querySelector('.card__button');
-let img = document.querySelector('.card__picture')
 const initialCards = [
     {
       Mesto: 'Архыз',
@@ -108,7 +107,13 @@ function getItem(item) {
   removeBtn.addEventListener('click', handleDelete);
   const likeBtn = newItem.querySelector('.card__button')
   likeBtn.addEventListener('click', LikeHeart)
-  head.addEventListener('click', imageBig)
+  const image = newItem.querySelector('.card__picture')
+  head.addEventListener('click', () => {
+    image.classList.add('card__picture_active')
+  })
+  image.addEventListener('click', () =>{
+    image.classList.remove('card__picture_active')
+  })
   return newItem;
 }
 function handleAdd() {
@@ -133,7 +138,7 @@ function handleDelete(event) {
 let LikeHeart = (item) => { 
   item.target.classList.toggle('card__button_active')
 }
-function imageBig(item){
-  item.classList.toggle('card__picture_active')
+function imageBig(){
+  item.classList.add('card__picture_active')
 }
 render();

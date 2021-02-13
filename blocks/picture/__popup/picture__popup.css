@@ -9,3 +9,8 @@
     border-radius: 10px;
     position: relative;
 }
+@media screen and (max-width: 910px){
+    .picture__popup{
+        max-width: 282px;
+    }
+}

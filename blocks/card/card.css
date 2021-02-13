@@ -4,5 +4,5 @@
     border-radius: 10px;
     margin: 0;
     position: relative;
-    order: 0;
+    z-index: 0;
 }

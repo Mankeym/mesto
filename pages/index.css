@@ -44,3 +44,6 @@
 @import url(../blocks/card/__picture/card__picture.css);
 @import url(../blocks/card/__picture/_active/card__picture_active.css);
 @import url(../blocks/card/__bigimage/card__bigimage.css);
+@import url(../blocks/card/__textpicture/card__textpicture.css);
+@import url(../blocks/card/__figcaption/card__figcaption.css);
+@import url(../blocks/picture/__popup/__image/picture__popup__image.css);
