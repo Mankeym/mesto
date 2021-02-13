@@ -2,7 +2,9 @@
     display:flex;
     justify-content: space-between;
     margin: auto;
+    margin-left: 21px;
     margin-top: 25px;
+    margin-right: 0;
     max-width: 246px;
     font-family: 'Inter', "Arial ", sans-serif;
     font-style: normal;
@@ -13,4 +15,5 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    width: 224px ;
 }

@@ -30,72 +30,7 @@
             </button>
         </section>
         <section class="cards">
-            <div class="card">
-                <img src="./images/karachay.png" class="card__logo" alt="Карачаевск">
-                <div>
-                    <h3 class="card__title">
-                        Карачаевск
-                        <button type="button" class="card__button">
-                            <img class="card__like" src="./images/hearth.svg" alt="Сердце">
-                        </button>
-                    </h3>
-                </div>
-            </div>
-            <div class="card">
-                <img src="./images/elbrus.png" class="card__logo" alt="Эльбрус">
-                <div>
-                    <h3 class="card__title">
-                        Гора Эльбрус
-                        <button type="button" class="card__button">
-                            <img src="./images/hearth.svg" alt="Сердце">
-                        </button>
-                    </h3>
-                </div>
-            </div>
-            <div class="card">
-                <img src="./images/dombay.png" class="card__logo" alt="Домбай">
-                <div>
-                    <h3 class="card__title">
-                        Домбай
-                        <button type="button" class="card__button">
-                            <img src="./images/hearth.svg" alt="Сердце">
-                        </button>
-                    </h3>
-                </div>
-            </div>
-            <div class="card">
-                <img src="./images/elbrus.png" class="card__logo" alt="Эльбрус">
-                <div>
-                    <h3 class="card__title">
-                        Гора Эльбрус
-                        <button type="button" class="card__button">
-                            <img src="./images/hearth.svg" alt="Сердце">
-                        </button>
-                    </h3>
-                </div>
-            </div>
-            <div class="card">
-                <img src="./images/dombay.png" class="card__logo" alt="Эльбрус">
-                <div>
-                    <h3 class="card__title">
-                        Домбай
-                        <button type="button" class="card__button">
-                            <img src="./images/hearth.svg" alt="Сердце">
-                        </button>
-                    </h3>
-                </div>
-            </div>
-            <div class="card">
-                <img src="./images/karachay.png" class="card__logo" alt="Карачаевск">
-                <div>
-                    <h3 class="card__title">
-                        Карачаевск
-                        <button type="button" class="card__button">
-                            <img src="./images/hearth.svg" alt="Сердце">
-                        </button>
-                    </h3>
-                </div>
-            </div>
+
         </section>
     
     </main>
@@ -129,6 +64,23 @@
         </div>
     </section>
     </div>
+        <template class="card-template">
+           <figure class="card">
+            <button class="card__trash">
+                <img src="./images/Trash.svg">
+            </button>
+                <img src="" class="card__logo">
+                <figcaption style="display: flex;">
+                    <h3 class="card__title"></h3>
+                    <button aria-label="Кнопка нравится" type="button" class="card__button">
+                    </button>
+                </figcaption>
+            </figure>
+            <div class="card__picture">
+                    <img src="" class="card__bigimage">
+                    <h3 class="card__textpicture"></h3>
+            </div>
+        </template>
 <script src="./script/index.js"></script>
 </body>
 </html>
