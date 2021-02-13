@@ -33,11 +33,11 @@
 @import url(../blocks/picture/picture.css);
 @import url(../blocks/picture/_active/picture_active.css);
 @import url(../blocks/picture/__popup/picture__popup.css);
-@import url(../blocks/picture/__popup/__button/picture__popup__button.css);
-@import url(../blocks/picture/__popup/__form/picture__popup__form.css);
-@import url(../blocks/picture/__popup/__title/picture__popup__title.css);
-@import url(../blocks/picture/__popup/__input/picture__popup__input.css);
-@import url(../blocks/picture/__popup/__submit/picture__popup__submit.css);
+@import url(../blocks/picture/__button/picture__button.css);
+@import url(../blocks/picture/__form/picture__form.css);
+@import url(../blocks/picture/__title/picture__title.css);
+@import url(../blocks/picture/__input/picture__input.css);
+@import url(../blocks/picture/__submit/picture__submit.css);
 @import url(../blocks/card/__trash/card__trash.css);
 @import url(../blocks/card/__button/_active/card__button_active.css);
 @import url(../blocks/card/__logo/_active/card__logo_active.css);
@@ -46,4 +46,4 @@
 @import url(../blocks/card/__bigimage/card__bigimage.css);
 @import url(../blocks/card/__textpicture/card__textpicture.css);
 @import url(../blocks/card/__figcaption/card__figcaption.css);
-@import url(../blocks/picture/__popup/__image/picture__popup__image.css);
+@import url(../blocks/picture/__image/picture__image.css);
