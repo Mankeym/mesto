@@ -37,10 +37,10 @@
     <footer class="footer">
         <h2 class="footer__copyright">© 2020 Mesto Russia</h2>
     </footer>
-    <section class="overlay">
+    <section data-name="overlayFirst" class="overlay">
         <div class="popup">
             <h2 class="popup__title">Редактировать профиль</h2>
-            <form name="form" class="popup__form">
+            <form class="popup__form">
                 <input type="text" class="popup__input popup__input_type_name" name="name" value="Жак-Ив Кусто">
                 <input type="text" class="popup__input popup__input_type_job" name="job" value="Исследователь окена">
                 <button type="submit" class="popup__submit" value="Сохранить">Сохранить</button>
@@ -50,27 +50,30 @@
             </button>
         </div>
     </section>
-    <section class="picture">
-        <div class="picture__popup">
-            <h2 class="picture__title">Новое место</h2>
-            <form name="form" class="picture__form">
-                <input type="text" class="picture__input picture__input_type_name" name="name" value="Название">
-                <input type="text" class="picture__input picture__input_type_job" name="job" value="Ссылка на картинку">
-                <button type="submit" class="picture__submit" value="Сохранить">Сохранить</button>
+    <section  class="overlay overlay_edit">
+        <div class="popup">
+            <h2 class="popup__title">Новое место</h2>
+            <form class="popup__form popup__form_edit">
+                <input type="text" class="popup__input popup__input_type_mesto" name="Mesto" value="Название">
+                <input type="text" class="popup__input popup__input_type_link" name="Link" value="Ссылка на картинку">
+                <button type="submit" class="popup__submit" value="Сохранить">Сохранить</button>
             </form>
-            <button type="button" class="picture__button">
-                <img class="picture__image" src="./images/Close.svg" alt="Крест">
+            <button type="button" class="overlay__button overlay__button_edit">
+                <img class="overlay__image" src="./images/Close.svg" alt="Крест">
             </button>
         </div>
     </section>
     </div>
         <template class="card-template">
-            <div class="card__picture">
-                <div class="card__imageBag">
-                <img class="card__bigimage" alt="Большая картинка">
-                <h3 class="card__textpicture"></h3>
+            <section class="overlay overlay_edit-picture">
+                <div class="popup popup_bigImage">
+                        <img class="popup__picture" alt="Большая картинка">
+                        <h3 class="popup__textpicture"></h3>
+                        <button type="button" class="overlay__button overlay__button_edit-picture">
+                            <img class="overlay__image" src="./images/Close.svg" alt="Крест">
+                        </button>
                 </div>
-        </div>
+            </section>
            <figure class="card">
             <button class="card__trash">
                 <img src="./images/Trash.svg">

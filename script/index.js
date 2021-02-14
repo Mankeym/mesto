@@ -1,23 +1,25 @@
-let openButton = document.querySelector('.profile__rectangle')
-let overlay = document.querySelector('.overlay')
-let nameInput = document.querySelector('.popup__input_type_name')
-let jobInput = document.querySelector('.popup__input_type_job')
-let name = document.querySelector('.profile__title')
-let job = document.querySelector('.profile__subtitle')
-let NameMesto = document.querySelector('.card__title')
-let LinkMesto = document.querySelector('.card__logo')
-let closeOverlay = document.querySelector('.overlay__button')
-let formElement = document.querySelector('.popup__form')
-let form = document.querySelector('.picture__form')
-let picture = document.querySelector('.picture')
-let OpenPicture = document.querySelector('.profile__button')
-let closePicture = document.querySelector('.picture__button')
-let CardContent = document.querySelector('.card-template');
-let namePicture = document.querySelector('.picture__input_type_name')
-let jobPicture = document.querySelector('.picture__input_type_job')
+const openButton = document.querySelector('.profile__rectangle')
+const overlay = document.querySelector('.overlay')
+const nameInput = document.querySelector('.popup__input_type_name')
+const jobInput = document.querySelector('.popup__input_type_job')
+const name = document.querySelector('.profile__title')
+const job = document.querySelector('.profile__subtitle')
+const NameMesto = document.querySelector('.card__title')
+const LinkMesto = document.querySelector('.card__logo')
+const closeOverlay = document.querySelector('.overlay__button')
+const formElement = document.querySelector('.popup__form')
+const form = document.querySelector('.popup__form_edit')
+const picture = document.querySelector('.overlay')
+const OpenPicture = document.querySelector('.profile__button')
+const closePicture = document.querySelector('.overlay__button_edit')
+const CardContent = document.querySelector('.card-template');
+const namePicture = document.querySelector('.popup__input_type_mesto')
+const jobPicture = document.querySelector('.popup__input_type_link')
 const directorsList = document.querySelector('.cards');
-let templateEl = document.querySelector('.card-template');
-let LikeBlack = document.querySelector('.card__button');
+const templateEl = document.querySelector('.card-template');
+const LikeBlack = document.querySelector('.card__button');
+const overlayEdit = document.querySelector('.overlay_edit')
+const overlayEditPicture = document.querySelector('.overlay_edit-picture')
 const initialCards = [
     {
       Mesto: 'Архыз',
@@ -44,19 +46,11 @@ const initialCards = [
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
   ]; 
-let togglePopupOpen = () => {
-    overlay.classList.toggle('overlay_active')
-    if(overlay.classList.contains('overlay_active')){
-        nameInput.value = name.textContent
-        jobInput.value = job.textContent
-    }
-}
-openButton.addEventListener('click', togglePopupOpen)
-closeOverlay.addEventListener('click',togglePopupOpen)
-overlay.addEventListener('mouseup', (event) => {
-    if (event.target === event.currentTarget) {
-        togglePopupOpen()
-    }
+openButton.addEventListener('click', () =>{
+  openPopup(overlay)
+})
+closeOverlay.addEventListener('click', () =>{
+  closePopup(overlay)
 })
 
 // Обработчик «отправки» формы, хотя пока
@@ -70,21 +64,20 @@ function handleFormSubmit (evt) {
     name.textContent = nameInput.value
     job.textContent = jobInput.value
     // Выберите элементы, куда должны быть вставлены значения полей
-    togglePopupOpen()
+    nameInput.value = name.textContent
+    jobInput.value = job.textContent
+    closePopup(overlay)
+    
     // Вставьте новые значения с помощью textContent
 }
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', handleFormSubmit)
-let togglePictureOpen = () => {
-    picture.classList.toggle('picture_active')
-}
-OpenPicture.addEventListener('click', togglePictureOpen)
-closePicture.addEventListener('click',togglePictureOpen)
-overlay.addEventListener('mouseup', (event) => {
-    if (event.target === event.currentTarget) {
-        togglePictureOpen()
-    }
+OpenPicture.addEventListener('click', () =>{
+  openPopup(overlayEdit)
+})
+closePicture.addEventListener('click', () =>{
+  closePopup(overlayEdit)
 })
 function render() {
   const html = initialCards
@@ -98,21 +91,20 @@ function getItem(item) {
   headerEl.textContent = item.Mesto;
   const head = newItem.querySelector('.card__logo')
   head.src = item.link
-  const img = newItem.querySelector('.card__picture')
-  const bigImage = newItem.querySelector('.card__bigimage')
+  const bigImage = newItem.querySelector('.popup__picture')
   bigImage.src = item.link
-  const textpicture = newItem.querySelector('.card__textpicture')
+  const textpicture = newItem.querySelector('.popup__textpicture')
   textpicture.textContent = item.Mesto
   const removeBtn = newItem.querySelector('.card__trash');
   removeBtn.addEventListener('click', handleDelete);
   const likeBtn = newItem.querySelector('.card__button')
   likeBtn.addEventListener('click', LikeHeart)
-  const image = newItem.querySelector('.card__picture')
+  const image = newItem.querySelector('.overlay_edit-picture')
   head.addEventListener('click', () => {
-    image.classList.add('card__picture_active')
+    image.classList.add('overlay_active')
   })
   image.addEventListener('click', () =>{
-    image.classList.remove('card__picture_active')
+    image.classList.remove('overlay_active')
   })
   return newItem;
 }
@@ -127,7 +119,7 @@ function handleAdd() {
 function RenderImage(evt){
   evt.preventDefault()
   handleAdd()
-  togglePictureOpen()
+  closePopup(overlayEdit)
 }
 form.addEventListener('submit', RenderImage)
 function handleDelete(event) {
@@ -138,7 +130,11 @@ function handleDelete(event) {
 let LikeHeart = (item) => { 
   item.target.classList.toggle('card__button_active')
 }
-function imageBig(){
-  item.classList.add('card__picture_active')
+
+function openPopup(popup){
+  popup.classList.add('overlay_active')
+}
+function closePopup(popup){
+  popup.classList.remove('overlay_active')
 }
 render();

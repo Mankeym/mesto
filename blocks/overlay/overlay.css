@@ -10,4 +10,5 @@
     align-items: center;
     background: rgba(0, 0, 0, .5);
     flex-direction: column;
+    z-index: 1000;
 }
