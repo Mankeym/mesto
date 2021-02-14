@@ -35,3 +35,4 @@
 @import url(../blocks/card/__logo/_active/card__logo_active.css);
 @import url(../blocks/card/__figcaption/card__figcaption.css);
 @import url(../blocks/popup/_bigImage/popup_bigImage.css);
+@import url(../blocks/popup/__textpicture/popup__textpicture.css);

@@ -1,15 +1,13 @@
 const openButton = document.querySelector('.profile__rectangle')
-const overlay = document.querySelector('.overlay')
+const profilePopup = document.querySelector('.profile-popup');
 const nameInput = document.querySelector('.popup__input_type_name')
 const jobInput = document.querySelector('.popup__input_type_job')
 const name = document.querySelector('.profile__title')
 const job = document.querySelector('.profile__subtitle')
 const NameMesto = document.querySelector('.card__title')
-const LinkMesto = document.querySelector('.card__logo')
 const closeOverlay = document.querySelector('.overlay__button')
 const formElement = document.querySelector('.popup__form')
 const form = document.querySelector('.popup__form_edit')
-const picture = document.querySelector('.overlay')
 const OpenPicture = document.querySelector('.profile__button')
 const closePicture = document.querySelector('.overlay__button_edit')
 const CardContent = document.querySelector('.card-template');
@@ -20,6 +18,9 @@ const templateEl = document.querySelector('.card-template');
 const LikeBlack = document.querySelector('.card__button');
 const overlayEdit = document.querySelector('.overlay_edit')
 const overlayEditPicture = document.querySelector('.overlay_edit-picture')
+const buttonEdit = document.querySelector('.overlay__button_edit-picture')
+const pictureBig = document.querySelector('.popup__picture')
+const textPicture = document.querySelector('.popup__textpicture')
 const initialCards = [
     {
       Mesto: 'Архыз',
@@ -47,10 +48,12 @@ const initialCards = [
     }
   ]; 
 openButton.addEventListener('click', () =>{
-  openPopup(overlay)
+  nameInput.value = name.textContent
+  jobInput.value = job.textContent
+  openPopup(profilePopup)
 })
 closeOverlay.addEventListener('click', () =>{
-  closePopup(overlay)
+  closePopup(profilePopup)
 })
 
 // Обработчик «отправки» формы, хотя пока
@@ -64,9 +67,7 @@ function handleFormSubmit (evt) {
     name.textContent = nameInput.value
     job.textContent = jobInput.value
     // Выберите элементы, куда должны быть вставлены значения полей
-    nameInput.value = name.textContent
-    jobInput.value = job.textContent
-    closePopup(overlay)
+    closePopup(profilePopup)
     
     // Вставьте новые значения с помощью textContent
 }
@@ -91,20 +92,17 @@ function getItem(item) {
   headerEl.textContent = item.Mesto;
   const head = newItem.querySelector('.card__logo')
   head.src = item.link
-  const bigImage = newItem.querySelector('.popup__picture')
-  bigImage.src = item.link
-  const textpicture = newItem.querySelector('.popup__textpicture')
-  textpicture.textContent = item.Mesto
   const removeBtn = newItem.querySelector('.card__trash');
   removeBtn.addEventListener('click', handleDelete);
   const likeBtn = newItem.querySelector('.card__button')
   likeBtn.addEventListener('click', LikeHeart)
-  const image = newItem.querySelector('.overlay_edit-picture')
-  head.addEventListener('click', () => {
-    image.classList.add('overlay_active')
+  head.addEventListener('click', () =>{
+    pictureBig.src = head.src
+    textPicture.textContent = headerEl.textContent
+    openPopup(overlayEditPicture)
   })
-  image.addEventListener('click', () =>{
-    image.classList.remove('overlay_active')
+  buttonEdit.addEventListener('click', () =>{
+    closePopup(overlayEditPicture)
   })
   return newItem;
 }
@@ -116,21 +114,20 @@ function handleAdd() {
   namePicture.value = ''
   jobPicture.value = ''
 }
-function RenderImage(evt){
+function renderImage(evt){
   evt.preventDefault()
   handleAdd()
   closePopup(overlayEdit)
 }
-form.addEventListener('submit', RenderImage)
+form.addEventListener('submit', renderImage)
 function handleDelete(event) {
   const targetEl = event.target;
   const targetItem = targetEl.closest('.card');
   targetItem.remove();
 }
-let LikeHeart = (item) => { 
+const likeHeart = (item) => { 
   item.target.classList.toggle('card__button_active')
 }
-
 function openPopup(popup){
   popup.classList.add('overlay_active')
 }
