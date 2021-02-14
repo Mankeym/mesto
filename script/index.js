@@ -95,7 +95,7 @@ function getItem(item) {
   const removeBtn = newItem.querySelector('.card__trash');
   removeBtn.addEventListener('click', handleDelete);
   const likeBtn = newItem.querySelector('.card__button')
-  likeBtn.addEventListener('click', LikeHeart)
+  likeBtn.addEventListener('click', likeHeart)
   head.addEventListener('click', () =>{
     pictureBig.src = head.src
     textPicture.textContent = headerEl.textContent
