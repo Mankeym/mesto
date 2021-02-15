@@ -4,18 +4,16 @@ const nameInput = document.querySelector('.popup__input_type_name')
 const jobInput = document.querySelector('.popup__input_type_job')
 const name = document.querySelector('.profile__title')
 const job = document.querySelector('.profile__subtitle')
-const NameMesto = document.querySelector('.card__title')
 const closeOverlay = document.querySelector('.overlay__button')
 const formElement = document.querySelector('.popup__form')
 const form = document.querySelector('.popup__form_edit')
-const OpenPicture = document.querySelector('.profile__button')
+const openPicture = document.querySelector('.profile__button')
 const closePicture = document.querySelector('.overlay__button_edit')
-const CardContent = document.querySelector('.card-template');
+const cardContent = document.querySelector('.card-template');
 const namePicture = document.querySelector('.popup__input_type_mesto')
 const jobPicture = document.querySelector('.popup__input_type_link')
 const directorsList = document.querySelector('.cards');
 const templateEl = document.querySelector('.card-template');
-const LikeBlack = document.querySelector('.card__button');
 const overlayEdit = document.querySelector('.overlay_edit')
 const overlayEditPicture = document.querySelector('.overlay_edit-picture')
 const buttonEdit = document.querySelector('.overlay__button_edit-picture')
@@ -74,7 +72,7 @@ function handleFormSubmit (evt) {
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', handleFormSubmit)
-OpenPicture.addEventListener('click', () =>{
+openPicture.addEventListener('click', () =>{
   openPopup(overlayEdit)
 })
 closePicture.addEventListener('click', () =>{
@@ -86,8 +84,9 @@ function render() {
 
   directorsList.append(...html);
 }
+// Создание карточки
 function getItem(item) {
-  const newItem = CardContent.cloneNode(true).content
+  const newItem = cardContent.cloneNode(true).content
   const headerEl = newItem.querySelector('.card__title');
   headerEl.textContent = item.Mesto;
   const head = newItem.querySelector('.card__logo')
@@ -106,6 +105,7 @@ function getItem(item) {
   })
   return newItem;
 }
+// Добавляем карточку
 function handleAdd() {
   const inputText = namePicture.value;
   const inputLink = jobPicture.value;
@@ -114,23 +114,28 @@ function handleAdd() {
   namePicture.value = ''
   jobPicture.value = ''
 }
+// Отправка формы
 function renderImage(evt){
   evt.preventDefault()
   handleAdd()
   closePopup(overlayEdit)
 }
 form.addEventListener('submit', renderImage)
+// Удаляем карточку
 function handleDelete(event) {
   const targetEl = event.target;
   const targetItem = targetEl.closest('.card');
   targetItem.remove();
 }
+// Ставим лайк
 const likeHeart = (item) => { 
   item.target.classList.toggle('card__button_active')
 }
+// Открытие попапа
 function openPopup(popup){
   popup.classList.add('overlay_active')
 }
+// Закрытие попапа
 function closePopup(popup){
   popup.classList.remove('overlay_active')
 }
