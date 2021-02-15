@@ -100,11 +100,11 @@ function getItem(item) {
     textPicture.textContent = headerEl.textContent
     openPopup(overlayEditPicture)
   })
-  buttonEdit.addEventListener('click', () =>{
-      closePopup(overlayEditPicture)
-  })
   return newItem;
 }
+buttonEdit.addEventListener('click', () =>{
+  closePopup(overlayEditPicture)
+})
 // Добавляем карточку
 function handleAdd() {
   const inputText = namePicture.value;
