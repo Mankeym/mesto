@@ -101,7 +101,7 @@ function getItem(item) {
     openPopup(overlayEditPicture)
   })
   buttonEdit.addEventListener('click', () =>{
-    closePopup(overlayEditPicture)
+      closePopup(overlayEditPicture)
   })
   return newItem;
 }
