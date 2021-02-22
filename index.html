@@ -40,9 +40,9 @@
     <section class="overlay profile-popup">
         <div class="popup">
             <h2 class="popup__title">Редактировать профиль</h2>
-            <form class="popup__form">
-                <input type="text" class="popup__input popup__input_type_name" name="name" value="Жак-Ив Кусто">
-                <input type="text" class="popup__input popup__input_type_job" name="job" value="Исследователь окена">
+            <form class="popup__form" novalidate>
+                <input type="text" class="popup__input popup__input_type_name" name="name" value="Жак-Ив Кусто" maxlength="40" minlength="2" required>
+                <input type="text" class="popup__input popup__input_type_job" name="job" value="Исследователь окена" maxlength="200" minlength="2" required>
                 <button type="submit" class="popup__submit" value="Сохранить">Сохранить</button>
             </form>
             <button type="button" class="overlay__button">
@@ -53,9 +53,9 @@
     <section  class="overlay overlay_edit">
         <div class="popup">
             <h2 class="popup__title">Новое место</h2>
-            <form class="popup__form popup__form_edit">
-                <input type="text" class="popup__input popup__input_type_mesto" name="Mesto" placeholder="Название">
-                <input type="text" class="popup__input popup__input_type_link" name="Link" placeholder="Ссылка на картинку">
+            <form class="popup__form popup__form_edit" novalidate>
+                <input type="text" class="popup__input popup__input_type_mesto" name="Mesto" placeholder="Название" minlength="2" maxlength="30" required>
+                <input  type="url" class="popup__input popup__input_type_link" name="Link" placeholder="Ссылка на картинку" required>
                 <button type="submit" class="popup__submit" value="Сохранить">Сохранить</button>
             </form>
             <button type="button" class="overlay__button overlay__button_edit">
@@ -87,5 +87,6 @@
             </figure>
         </template>
 <script src="./script/index.js"></script>
+<script src="./script/validate.js"></script>
 </body>
 </html>

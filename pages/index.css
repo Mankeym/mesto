@@ -36,3 +36,4 @@
 @import url(../blocks/card/__figcaption/card__figcaption.css);
 @import url(../blocks/popup/_bigImage/popup_bigImage.css);
 @import url(../blocks/popup/__textpicture/popup__textpicture.css);
+@import url(../blocks/popup/__submit/_disabled/popup__submit_disabled.css);
