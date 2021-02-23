@@ -1,11 +1,11 @@
-const openButton = document.querySelector('.profile__rectangle')
+const profilePopupOpenButton = document.querySelector('.profile__rectangle')
 const profilePopup = document.querySelector('.profile-popup');
 const nameInput = document.querySelector('.popup__input_type_name')
 const jobInput = document.querySelector('.popup__input_type_job')
 const name = document.querySelector('.profile__title')
 const job = document.querySelector('.profile__subtitle')
-const closeOverlay = document.querySelector('.overlay__button')
-const formElement = document.querySelector('.popup__form')
+const profileCloseButton = document.querySelector('.overlay__button')
+const formFirstElement = document.querySelector('.popup__form')
 const form = document.querySelector('.popup__form_edit')
 const openPicture = document.querySelector('.profile__button')
 const closePicture = document.querySelector('.overlay__button_edit')
@@ -45,18 +45,18 @@ const initialCards = [
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
   ]; 
-openButton.addEventListener('click', () =>{
+profilePopupOpenButton.addEventListener('click', () =>{
   nameInput.value = name.textContent
   jobInput.value = job.textContent
   openPopup(profilePopup)
-  const inputList = Array.from(profilePopup.querySelectorAll('.popup__input'));
-  const buttonElement = profilePopup.querySelector('.popup__submit');
+  const inputList = Array.from(profilePopup.querySelectorAll(valid.inputSelector));
+  const buttonElement = profilePopup.querySelector(valid.submitButton);
   validatePopupOnOpen(inputList,buttonElement);
 })
-closeOverlay.addEventListener('click', () =>{
+profileCloseButton.addEventListener('click', () =>{
   closePopup(profilePopup)
 })
-function pickEsc (evt) {
+function handleESCpress (evt) {
   if (evt.key === 'Escape') {
     closePopup(document.querySelector('.overlay_active'));
   };
@@ -68,7 +68,7 @@ function closeByOverlay (evt) {
 }
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
-function handleFormSubmit (evt) {
+function handleProfileSubmit (evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
                         // Так мы можем определить свою логику отправки.
                         // О том, как это делать, расскажем позже.
@@ -83,19 +83,17 @@ function handleFormSubmit (evt) {
 }
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
-formElement.addEventListener('submit', handleFormSubmit)
+formFirstElement.addEventListener('submit', handleProfileSubmit)
 openPicture.addEventListener('click', () =>{
   openPopup(overlayEdit)
   const inputList = Array.from(overlayEdit.querySelectorAll('.popup__input'));
   const buttonElement = overlayEdit.querySelector('.popup__submit');
   validatePopupOnOpen(inputList,buttonElement);
-  document.addEventListener('click', closeByOverlay);
-  document.addEventListener('keydown', pickEsc); 
+  document.addEventListener('keydown', handleESCpress); 
 })
 closePicture.addEventListener('click', () =>{
   closePopup(overlayEdit)
-  document.removeEventListener('click', closeByOverlay);
-  document.removeEventListener('keydown', pickEsc); 
+  document.removeEventListener('keydown', handleESCpress); 
 })
 function render() {
   const html = initialCards
@@ -118,11 +116,11 @@ function getItem(item) {
     textPicture.textContent = headerEl.textContent
     openPopup(overlayEditPicture)
   })
-  buttonEdit.addEventListener('click', () =>{
-    closePopup(overlayEditPicture)
-  })
   return newItem;
 }
+buttonEdit.addEventListener('click', () =>{
+  closePopup(overlayEditPicture)
+})
 function handleAdd() {
   const inputText = namePicture.value;
   const inputLink = jobPicture.value;
@@ -149,11 +147,11 @@ const likeHeart = (item) => {
 function openPopup(popup){
   popup.classList.add('overlay_active')
   document.addEventListener('click', closeByOverlay);
-  document.addEventListener('keydown', pickEsc); 
+  document.addEventListener('keydown', handleESCpress); 
 }
 function closePopup(popup){
   popup.classList.remove('overlay_active')
   document.removeEventListener('click', closeByOverlay);
-  document.removeEventListener('keydown', pickEsc); 
+  document.removeEventListener('keydown', handleESCpress); 
 }
 render();
