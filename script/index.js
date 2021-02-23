@@ -4,18 +4,16 @@ const nameInput = document.querySelector('.popup__input_type_name')
 const jobInput = document.querySelector('.popup__input_type_job')
 const name = document.querySelector('.profile__title')
 const job = document.querySelector('.profile__subtitle')
-const NameMesto = document.querySelector('.card__title')
 const closeOverlay = document.querySelector('.overlay__button')
 const formElement = document.querySelector('.popup__form')
 const form = document.querySelector('.popup__form_edit')
-const OpenPicture = document.querySelector('.profile__button')
+const openPicture = document.querySelector('.profile__button')
 const closePicture = document.querySelector('.overlay__button_edit')
-const CardContent = document.querySelector('.card-template');
+const cardContent = document.querySelector('.card-template');
 const namePicture = document.querySelector('.popup__input_type_mesto')
 const jobPicture = document.querySelector('.popup__input_type_link')
 const directorsList = document.querySelector('.cards');
-const templateEl = document.querySelector('.card-template');
-const LikeBlack = document.querySelector('.card__button');
+const templateEl = document.querySelector('.card-template');  
 const overlayEdit = document.querySelector('.overlay_edit')
 const overlayEditPicture = document.querySelector('.overlay_edit-picture')
 const buttonEdit = document.querySelector('.overlay__button_edit-picture')
@@ -58,7 +56,16 @@ openButton.addEventListener('click', () =>{
 closeOverlay.addEventListener('click', () =>{
   closePopup(profilePopup)
 })
-
+function pickEsc (evt) {
+  if (evt.key === 'Escape') {
+    closePopup(document.querySelector('.overlay_active'));
+  };
+}
+function closeByOverlay (evt) {
+  if(evt.target.classList.contains('overlay')){
+    closePopup(document.querySelector('.overlay_active'));
+  }
+}
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
 function handleFormSubmit (evt) {
@@ -77,14 +84,18 @@ function handleFormSubmit (evt) {
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', handleFormSubmit)
-OpenPicture.addEventListener('click', () =>{
+openPicture.addEventListener('click', () =>{
   openPopup(overlayEdit)
   const inputList = Array.from(overlayEdit.querySelectorAll('.popup__input'));
   const buttonElement = overlayEdit.querySelector('.popup__submit');
   validatePopupOnOpen(inputList,buttonElement);
+  document.addEventListener('click', closeByOverlay);
+  document.addEventListener('keydown', pickEsc); 
 })
 closePicture.addEventListener('click', () =>{
   closePopup(overlayEdit)
+  document.removeEventListener('click', closeByOverlay);
+  document.removeEventListener('keydown', pickEsc); 
 })
 function render() {
   const html = initialCards
@@ -93,7 +104,7 @@ function render() {
   directorsList.append(...html);
 }
 function getItem(item) {
-  const newItem = CardContent.cloneNode(true).content
+  const newItem = cardContent.cloneNode(true).content
   const headerEl = newItem.querySelector('.card__title');
   headerEl.textContent = item.Mesto;
   const head = newItem.querySelector('.card__logo')
@@ -137,8 +148,12 @@ const likeHeart = (item) => {
 }
 function openPopup(popup){
   popup.classList.add('overlay_active')
+  document.addEventListener('click', closeByOverlay);
+  document.addEventListener('keydown', pickEsc); 
 }
 function closePopup(popup){
   popup.classList.remove('overlay_active')
+  document.removeEventListener('click', closeByOverlay);
+  document.removeEventListener('keydown', pickEsc); 
 }
 render();

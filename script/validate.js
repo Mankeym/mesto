@@ -2,7 +2,10 @@ const valid = {
     popupForm: '.popup__form',
     inputSelector: '.popup__input',
     submitButton: '.popup__submit',
-    submitButtonDisabled: '.popup__submit_disabled'
+    submitButtonDisabled: '.popup__submit_disabled',
+    inputErrorCon:'.popup__input_type_error',
+    errorVis: '.popup__error_visible'
+
 }
 
   const hasInvalidInput = (inputList) => {
@@ -21,24 +24,24 @@ const valid = {
         buttonElement.disabled = false;
     }
   };
-  const inputError = (popupForm, inputSelector, errorMessage, inputErrorClass, errorClass) => {
+  const inputError = (popupForm, inputSelector, errorMessage) => {
     const error = popupForm.querySelector(`.${inputSelector.id}-error`);
-    inputSelector.classList.add(inputErrorClass);
+    inputSelector.classList.add('popup__input_type_error');
     error.textContent = errorMessage;
-    error.classList.add(errorClass);
+    error.classList.add('popup__error_visible');
   };
 
-   const hideInputError = (popupForm, inputSelector, inputErrorClass, errorClass) => {
+   const hideInputError = (popupForm, inputSelector) => {
     const error = popupForm.querySelector(`.${inputSelector.id}-error`);
-    inputSelector.classList.remove(inputErrorClass);
+    inputSelector.classList.remove('popup__input_type_error');
     error.textContent = "";
-    error.classList.remove(errorClass);
+    error.classList.remove('popup__error_visible');
   };
-  const isValid = (popupForm, inputSelector, inputErrorClass, errorClass) => {
+  const isValid = (popupForm, inputSelector) => {
     if (!inputSelector.validity.valid) {
-        inputError(popupForm, inputSelector, inputSelector.validationMessage, inputErrorClass, errorClass);
+        inputError(popupForm, inputSelector, inputSelector.validationMessage);
     } else {
-        hideInputError(popupForm, inputSelector, inputErrorClass, errorClass);
+        hideInputError(popupForm, inputSelector);
     }
     }; 
   const setEventListeners = (popupForm,submitButton,inputSelector) => {
@@ -47,6 +50,7 @@ const valid = {
     toggleButtonState(inputList, buttonElement)
     inputList.forEach((inputSelector) => {
         inputSelector.addEventListener('input', () => {
+            isValid(popupForm, inputSelector);
             // ... и переключает состояние кнопки Submit
             toggleButtonState(inputList, buttonElement);
         });

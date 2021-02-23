@@ -21,6 +21,7 @@
         margin-right: 22px;
     }
 }
+/*
 .popup__input:invalid{
     border-bottom: 1px solid rgba(255,0,0,1);
 }

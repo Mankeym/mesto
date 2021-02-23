@@ -41,8 +41,10 @@
         <div class="popup">
             <h2 class="popup__title">Редактировать профиль</h2>
             <form class="popup__form" novalidate>
-                <input type="text" class="popup__input popup__input_type_name" name="name" value="Жак-Ив Кусто" maxlength="40" minlength="2" required>
-                <input type="text" class="popup__input popup__input_type_job" name="job" value="Исследователь окена" maxlength="200" minlength="2" required>
+                <input type="text" id="popup__name-author" class="popup__input popup__input_type_name" name="name" value="Жак-Ив Кусто" maxlength="40" minlength="2" required>
+                <span class="popup__name-author-error popup__error"></span>
+                <input type="text" id="popup__link-author" class="popup__input popup__input_type_job" name="job" value="Исследователь окена" maxlength="200" minlength="2" required>
+                <span class="popup__link-author-error popup__error"></span>
                 <button type="submit" class="popup__submit" value="Сохранить">Сохранить</button>
             </form>
             <button type="button" class="overlay__button">
@@ -54,9 +56,11 @@
         <div class="popup">
             <h2 class="popup__title">Новое место</h2>
             <form class="popup__form popup__form_edit" novalidate>
-                <input type="text" class="popup__input popup__input_type_mesto" name="Mesto" placeholder="Название" minlength="2" maxlength="30" required>
-                <input  type="url" class="popup__input popup__input_type_link" name="Link" placeholder="Ссылка на картинку" required>
-                <button type="submit" class="popup__submit" value="Сохранить">Сохранить</button>
+                <input id="popup__name" type="text" class="popup__input popup__input_type_mesto" name="Mesto" placeholder="Название" minlength="2" maxlength="30" required>
+                <span class="popup__name-error popup__error"></span>
+                <input id="popup__link" type="url" class="popup__input popup__input_type_link" name="Link" placeholder="Ссылка на картинку" required>
+                <span class="popup__link-error popup__error"></span>
+                <button type="submit" class="popup__submit" value="Сохранить" disabled>Сохранить</button>
             </form>
             <button type="button" class="overlay__button overlay__button_edit">
                 <img class="overlay__image" src="./images/Close.svg" alt="Крест">
