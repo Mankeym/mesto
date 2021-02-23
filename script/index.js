@@ -89,11 +89,9 @@ openPicture.addEventListener('click', () =>{
   const inputList = Array.from(overlayEdit.querySelectorAll('.popup__input'));
   const buttonElement = overlayEdit.querySelector('.popup__submit');
   validatePopupOnOpen(inputList,buttonElement);
-  document.addEventListener('keydown', handleESCpress); 
 })
 closePicture.addEventListener('click', () =>{
   closePopup(overlayEdit)
-  document.removeEventListener('keydown', handleESCpress); 
 })
 function render() {
   const html = initialCards
