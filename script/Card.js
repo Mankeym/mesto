@@ -1,3 +1,4 @@
+import {closePopup, openPopup} from './index.js'
 export class Card {
     constructor(Mesto,link){
         this._mesto = Mesto
@@ -32,7 +33,7 @@ export class Card {
         const cardImage = document.querySelector('.popup__picture')
         const cardTitle = document.querySelector('.popup__textpicture')
         const overlayEditPicture = document.querySelector('.overlay_edit-picture')
-        overlayEditPicture.classList.add('overlay_active')
+        openPopup(overlayEditPicture)
         cardImage.src = this._link
         cardTitle.textContent = this._mesto
     }

@@ -52,7 +52,7 @@ const initialCards = [
     errorVis: 'popup__error_visible'
 }
 const valAuthorForm = new FormValidator(valid, profilePopup);
-const valAuthoForm = new FormValidator(valid, formFirstElement);
+const valImageForm = new FormValidator(valid, form);
 profilePopupOpenButton.addEventListener('click', () =>{
   nameInput.value = name.textContent
   jobInput.value = job.textContent
@@ -120,12 +120,12 @@ function renderImage(evt){
   closePopup(overlayEdit)
 }
 form.addEventListener('submit', renderImage)
-function openPopup(popup){
+export function openPopup(popup){
   popup.classList.add('overlay_active')
   document.addEventListener('click', closeByOverlay);
   document.addEventListener('keydown', handleESCpress); 
 }
-function closePopup(popup){
+export function closePopup(popup){
   popup.classList.remove('overlay_active')
   document.removeEventListener('click', closeByOverlay);
   document.removeEventListener('keydown', handleESCpress); 
@@ -136,3 +136,4 @@ initialCards.forEach((item) => {
   directorsList.append(newCard);
 }); 
 valAuthorForm.enableValidation();
+valImageForm.enableValidation();
