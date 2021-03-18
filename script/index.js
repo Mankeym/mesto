@@ -1,3 +1,5 @@
+import {Card} from './Card.js';
+import {FormValidator} from './FormValidator.js';
 const profilePopupOpenButton = document.querySelector('.profile__rectangle')
 const profilePopup = document.querySelector('.profile-popup');
 const nameInput = document.querySelector('.popup__input_type_name')
@@ -9,16 +11,12 @@ const formFirstElement = document.querySelector('.popup__form')
 const form = document.querySelector('.popup__form_edit')
 const openPicture = document.querySelector('.profile__button')
 const closePicture = document.querySelector('.overlay__button_edit')
-const cardContent = document.querySelector('.card-template');
 const namePicture = document.querySelector('.popup__input_type_mesto')
 const jobPicture = document.querySelector('.popup__input_type_link')
 const directorsList = document.querySelector('.cards');
-const templateEl = document.querySelector('.card-template');  
 const overlayEdit = document.querySelector('.overlay_edit')
 const overlayEditPicture = document.querySelector('.overlay_edit-picture')
 const buttonEdit = document.querySelector('.overlay__button_edit-picture')
-const pictureBig = document.querySelector('.popup__picture')
-const textPicture = document.querySelector('.popup__textpicture')
 const initialCards = [
     {
       Mesto: 'Архыз',
@@ -45,13 +43,23 @@ const initialCards = [
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
   ]; 
+  const valid = {
+    popupForm:'.popup__form',
+    inputSelector:'.popup__input',
+    submitButton:'.popup__submit',
+    submitButtonDisabled:'popup__submit_disabled',
+    inputErrorCon:'popup__input_type_error',
+    errorVis: 'popup__error_visible'
+}
+const valAuthorForm = new FormValidator(valid, profilePopup);
+const valAuthoForm = new FormValidator(valid, formFirstElement);
 profilePopupOpenButton.addEventListener('click', () =>{
   nameInput.value = name.textContent
   jobInput.value = job.textContent
   openPopup(profilePopup)
   const inputList = Array.from(profilePopup.querySelectorAll(valid.inputSelector));
   const buttonElement = profilePopup.querySelector(valid.submitButton);
-  validatePopupOnOpen(inputList,buttonElement);
+  valAuthorForm.validatePopupOnOpen(inputList,buttonElement);
 })
 profileCloseButton.addEventListener('click', () =>{
   closePopup(profilePopup)
@@ -88,42 +96,20 @@ openPicture.addEventListener('click', () =>{
   openPopup(overlayEdit)
   const inputList = Array.from(overlayEdit.querySelectorAll('.popup__input'));
   const buttonElement = overlayEdit.querySelector('.popup__submit');
-  validatePopupOnOpen(inputList,buttonElement);
+  valAuthorForm.validatePopupOnOpen(inputList,buttonElement);
 })
 closePicture.addEventListener('click', () =>{
   closePopup(overlayEdit)
 })
-function render() {
-  const html = initialCards
-      .map(getItem)
-
-  directorsList.append(...html);
-}
-function getItem(item) {
-  const newItem = cardContent.cloneNode(true).content
-  const headerEl = newItem.querySelector('.card__title');
-  headerEl.textContent = item.Mesto;
-  const head = newItem.querySelector('.card__logo')
-  head.src = item.link
-  const removeBtn = newItem.querySelector('.card__trash');
-  removeBtn.addEventListener('click', handleDelete);
-  const likeBtn = newItem.querySelector('.card__button')
-  likeBtn.addEventListener('click', likeHeart)
-  head.addEventListener('click', () =>{
-    pictureBig.src = head.src
-    textPicture.textContent = headerEl.textContent
-    openPopup(overlayEditPicture)
-  })
-  return newItem;
-}
 buttonEdit.addEventListener('click', () =>{
   closePopup(overlayEditPicture)
 })
 function handleAdd() {
   const inputText = namePicture.value;
   const inputLink = jobPicture.value;
-  const listItem = getItem({Mesto: inputText, link: inputLink});
-  directorsList.prepend(listItem);
+  const card = new Card(inputText,inputLink)
+  const cardActivate = card.getItem()
+  directorsList.prepend(cardActivate);
   namePicture.value = ''
   jobPicture.value = ''
   
@@ -134,14 +120,6 @@ function renderImage(evt){
   closePopup(overlayEdit)
 }
 form.addEventListener('submit', renderImage)
-function handleDelete(event) {
-  const targetEl = event.target;
-  const targetItem = targetEl.closest('.card');
-  targetItem.remove();
-}
-const likeHeart = (item) => { 
-  item.target.classList.toggle('card__button_active')
-}
 function openPopup(popup){
   popup.classList.add('overlay_active')
   document.addEventListener('click', closeByOverlay);
@@ -152,4 +130,9 @@ function closePopup(popup){
   document.removeEventListener('click', closeByOverlay);
   document.removeEventListener('keydown', handleESCpress); 
 }
-render();
+initialCards.forEach((item) => {
+  const card = new Card(item.Mesto, item.link);
+  const newCard = card.getItem();
+  directorsList.append(newCard);
+}); 
+valAuthorForm.enableValidation();
