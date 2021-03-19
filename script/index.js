@@ -15,31 +15,34 @@ const namePicture = document.querySelector('.popup__input_type_mesto')
 const jobPicture = document.querySelector('.popup__input_type_link')
 const directorsList = document.querySelector('.cards');
 const overlayEdit = document.querySelector('.overlay_edit')
-const overlayEditPicture = document.querySelector('.overlay_edit-picture')
-const buttonEdit = document.querySelector('.overlay__button_edit-picture')
+export const overlayEditPicture = document.querySelector('.overlay_edit-picture')
+export const cardImage = document.querySelector('.popup__picture')
+export const cardTitle = document.querySelector('.popup__textpicture')
+export const cardTemplate = document.querySelector('.card-template').content.querySelector('.card')
+const imageCloseButton = document.querySelector('.overlay__button_edit-picture')
 const initialCards = [
     {
-      Mesto: 'Архыз',
+      place: 'Архыз',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
     },
     {
-      Mesto: 'Челябинская область',
+      place: 'Челябинская область',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
     },
     {
-      Mesto: 'Иваново',
+      place: 'Иваново',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
     },
     {
-      Mesto: 'Камчатка',
+      place: 'Камчатка',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
     },
     {
-      Mesto: 'Холмогорский район',
+      place: 'Холмогорский район',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
     },
     {
-      Mesto: 'Байкал',
+      place: 'Байкал',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
   ]; 
@@ -71,7 +74,7 @@ function handleESCpress (evt) {
 }
 function closeByOverlay (evt) {
   if(evt.target.classList.contains('overlay')){
-    closePopup(document.querySelector('.overlay_active'));
+    closePopup(evt.target);
   }
 }
 // Обработчик «отправки» формы, хотя пока
@@ -101,14 +104,14 @@ openPicture.addEventListener('click', () =>{
 closePicture.addEventListener('click', () =>{
   closePopup(overlayEdit)
 })
-buttonEdit.addEventListener('click', () =>{
+imageCloseButton.addEventListener('click', () =>{
   closePopup(overlayEditPicture)
 })
 function handleAdd() {
   const inputText = namePicture.value;
   const inputLink = jobPicture.value;
-  const card = new Card(inputText,inputLink)
-  const cardActivate = card.getItem()
+  const createCard = new Card(inputText,inputLink,cardTemplate)
+  const cardActivate = createCard.getItem()
   directorsList.prepend(cardActivate);
   namePicture.value = ''
   jobPicture.value = ''
@@ -131,8 +134,8 @@ export function closePopup(popup){
   document.removeEventListener('keydown', handleESCpress); 
 }
 initialCards.forEach((item) => {
-  const card = new Card(item.Mesto, item.link);
-  const newCard = card.getItem();
+  const createCard = new Card(item.place, item.link,cardTemplate);
+  const newCard = createCard.getItem();
   directorsList.append(newCard);
 }); 
 valAuthorForm.enableValidation();

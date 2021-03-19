@@ -1,20 +1,18 @@
-import {closePopup, openPopup} from './index.js'
+import {closePopup, openPopup,overlayEditPicture,cardImage,cardTitle} from './index.js'
 export class Card {
-    constructor(Mesto,link){
-        this._mesto = Mesto
+    constructor(place,link,cardTemplate){
+        this._place = place
         this._link = link
-    }
-
-    _getTemplate(){
-        const newItem = document.querySelector('.card-template').cloneNode(true).content
-        return newItem
+        this._cardTemplate = cardTemplate;
     }
 
     getItem(){
-        this._element = this._getTemplate()
+        this._element = this._cardTemplate.cloneNode(true);
         this._setEventListeners()
-        this._element.querySelector('.card__title').textContent = this._mesto;
+        this._element.querySelector('.card__title').textContent = this._place;
         this._element.querySelector('.card__logo').src = this._link;
+        this._element.querySelector('.card__logo').alt = this._name;
+        
         return this._element;
     }
     _setEventListeners(){
@@ -30,12 +28,9 @@ export class Card {
         })
     }
     _clickLogo(){
-        const cardImage = document.querySelector('.popup__picture')
-        const cardTitle = document.querySelector('.popup__textpicture')
-        const overlayEditPicture = document.querySelector('.overlay_edit-picture')
         openPopup(overlayEditPicture)
         cardImage.src = this._link
-        cardTitle.textContent = this._mesto
+        cardTitle.textContent = this._place
     }
     _handleDelete(event){
         const targetEl = event.target;
