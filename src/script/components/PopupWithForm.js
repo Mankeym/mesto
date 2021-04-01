@@ -1,5 +1,5 @@
 import { Popup } from "./Popup.js";
-
+import {namePicture,jobPicture} from '../../pages/index.js'
 export class PopupWithForm extends Popup {
     constructor(popupSelector,{handleFormSubmit}){
         super(popupSelector)
@@ -19,6 +19,8 @@ export class PopupWithForm extends Popup {
             evt.preventDefault();
             this._handleFormSubmit(this._getInputValues());
             super.close();
+            namePicture.value = ''
+            jobPicture.value = ''
           })
     }
 

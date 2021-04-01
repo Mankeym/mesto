@@ -1,4 +1,4 @@
-import {overlayEditPicture,cardImage,cardTitle,overlayActive,imageCloseButton} from '../../index.js';
+import {overlayEditPicture,imageCloseButton} from '../../pages/index.js';
 import {Popup} from './Popup.js';
 export class Card {
     constructor(place,link,cardTemplate,handleCardClick){

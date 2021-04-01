@@ -1,24 +1,28 @@
-import {overlayImageCloseButton,profileCloseButton,overlay} from '../../index.js'
+import {overlayImageCloseButton,profileCloseButton,overlay} from '../../pages/index.js'
 export class Popup {
     constructor(popupSelector){
         this._container = popupSelector
+        this._handleEscCl = this._handleEscClose.bind(this);
+        this._closeByOver = this._closeByOverlay.bind(this);
     }
     open(){
         this._container.classList.add('overlay_active')
+        document.addEventListener('keydown', this._handleEscCl);
+        this._container.addEventListener('click', this._closeByOver);
     }
     close(){
         this._container.classList.remove('overlay_active')
+        document.removeEventListener('keydown', this._handleEscCl);
+        this._container.removeEventListener('click', this._closeByOver);
     }
-    _handleEscClose(){
+    _handleEscClose(evt){
         if (evt.key === 'Escape') {
-            const clickEsc = new Popup(document.querySelector('.overlay_active'))
-            clickEsc.close()
+            this.close()
           };
     }
     _closeByOverlay (evt) {
         if(evt.target.classList.contains('overlay')){
-            const clickOverlay = new Popup(document.querySelector('.overlay_active'));
-            clickOverlay.close();
+            this.close();
         }
       }
     setEventListeners(){

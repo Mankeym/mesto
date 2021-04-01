@@ -1,4 +1,4 @@
-import {cardImage, cardTitle} from '../../index.js';
+
 import {Popup} from './Popup.js'
 export class PopupWithImage extends Popup {
     constructor(name, link, containerSelector) {
@@ -8,9 +8,8 @@ export class PopupWithImage extends Popup {
     }
 
     open(){
-        console.log(cardTitle)
         super.open();
-        cardTitle.textContent = this._name;
-        cardImage.src = this._link;
+        this._container.querySelector('.popup__textpicture').textContent = this._name;
+        this._container.querySelector('.popup__picture').src = this._link;
     }
 }

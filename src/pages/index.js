@@ -1,11 +1,11 @@
-import './pages/index.css';
-import {Popup} from './script/components/Popup.js'
-import {Card} from './script/components/Card.js';
-import {Section} from './script/components/Section.js'
-import {FormValidator} from './script/components/FormValidator.js';
-import {PopupWithForm} from './script/components/PopupWithForm.js';
-import {PopupWithImage} from './script/components/PopupWithImage.js'
-import {UserInfo} from './script/components/UserInfo.js'
+import './index.css'
+import {Popup} from '../script/components/Popup.js'
+import {Card} from '../script/components/Card.js';
+import {Section} from '../script/components/Section.js'
+import {FormValidator} from '../script/components/FormValidator.js';
+import {PopupWithForm} from '../script/components/PopupWithForm.js';
+import {PopupWithImage} from '../script/components/PopupWithImage.js'
+import {UserInfo} from '../script/components/UserInfo.js'
 export const overlayActive = document.querySelector('.overlay_active')
 export const overlay = document.querySelectorAll('.overlay')
 const profilePopupOpenButton = document.querySelector('.profile__rectangle')
@@ -19,8 +19,8 @@ const formFirstElement = document.querySelector('.popup__form')
 const form = document.querySelector('.popup__form_edit')
 const openPicture = document.querySelector('.profile__button')
 const closePicture = document.querySelector('.overlay__button_edit')
-const namePicture = document.querySelector('.popup__input_type_mesto')
-const jobPicture = document.querySelector('.popup__input_type_link')
+export const namePicture = document.querySelector('.popup__input_type_mesto')
+export const jobPicture = document.querySelector('.popup__input_type_link')
 const directorsList = document.querySelector('.cards');
 const popupForm = document.querySelector('.popup')
 const overlayEdit = document.querySelector('.overlay_edit')
@@ -99,7 +99,7 @@ const formAddImage = new PopupWithForm(overlayEdit,
     handleFormSubmit: () => {
     const inputText = namePicture.value;
     const inputLink = jobPicture.value;
-    const openLargeImage = new PopupWithImage(inputText,inputLink, lilImage);
+    const openLargeImage = new PopupWithImage(inputText,inputLink, overlayEditPicture);
     const createCard = new Card(inputText,inputLink,cardTemplate, () => openLargeImage.open())
     const cardActivate = createCard.getItem()
     directorsList.prepend(cardActivate);
