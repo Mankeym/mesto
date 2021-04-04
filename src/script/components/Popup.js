@@ -1,4 +1,4 @@
-import {overlayImageCloseButton,profileCloseButton,overlay} from '../../pages/constants.js'
+import {overlayImageCloseButton,profileCloseButton,imageCloseButton} from '../../pages/constants.js'
 export class Popup {
     constructor(popupSelector){
         this._popup = document.querySelector(popupSelector)
@@ -32,5 +32,9 @@ export class Popup {
         overlayImageCloseButton.addEventListener('click', () => {
             this.close()
         })
+        imageCloseButton.addEventListener('click', () =>{
+            this.close()
+        })
+        
     }
 }
