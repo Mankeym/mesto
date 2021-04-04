@@ -39,7 +39,7 @@ export class FormValidator{
             this._hideInputError(popupForm, inputSelector,inputErrorCon,errorVis);
         }
         }; 
-      _setEventListeners(popupForm,submitButton,inputSelector,submitButtonDisabled,inputErrorCon,errorVis){
+      _setEventListeners(popupForm,submitButtonDisabled,inputErrorCon,errorVis){
         const inputList = Array.from(this._popupForm.querySelectorAll(this._valid.inputSelector))
         const buttonElement = this._popupForm.querySelector(this._valid.submitButton)
         this._toggleButtonState(inputList, buttonElement,submitButtonDisabled)
@@ -55,7 +55,7 @@ export class FormValidator{
           this._popupForm.addEventListener('submit', function (evt) {
                 evt.preventDefault();
           });
-          this._setEventListeners();
+          this._setEventListeners(); // При попытке исправить замечание в этой части, код начал ломаться, причину найти не могу. Прошу понять и просить :(
       };
       validatePopupOnOpen(inputList,buttonElement) {
             this._toggleButtonState(inputList, buttonElement);

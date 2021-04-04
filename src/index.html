@@ -39,10 +39,10 @@
     <section class="overlay profile-popup">
         <div class="popup">
             <h2 class="popup__title">Редактировать профиль</h2>
-            <form class="popup__form" novalidate>
-                <input type="text" id="popup__name-author" class="popup__input popup__input_type_name" name="name" value="Жак-Ив Кусто" maxlength="40" minlength="2" required>
+            <form name="userData" class="popup__form" novalidate>
+                <input type="text" id="popup__name-author" class="popup__input popup__input_type_name" name="username" value="Жак-Ив Кусто" maxlength="40" minlength="2" required>
                 <span class="popup__name-author-error popup__error"></span>
-                <input type="text" id="popup__link-author" class="popup__input popup__input_type_job" name="job" value="Исследователь окена" maxlength="200" minlength="2" required>
+                <input type="text" id="popup__link-author" class="popup__input popup__input_type_job" name="userinfo" value="Исследователь окена" maxlength="200" minlength="2" required>
                 <span class="popup__link-author-error popup__error"></span>
                 <button type="submit" class="popup__submit popup__submit-profile" value="Сохранить">Сохранить</button>
             </form>
@@ -54,10 +54,10 @@
     <section  class="overlay overlay_edit">
         <div class="popup">
             <h2 class="popup__title">Новое место</h2>
-            <form class="popup__form popup__form_edit" novalidate>
-                <input id="popup__name" type="text" class="popup__input popup__input_type_mesto" name="Mesto" placeholder="Название" minlength="2" maxlength="30" required>
+            <form name="cardData" class="popup__form popup__form_edit" novalidate>
+                <input id="popup__name" type="text" class="popup__input popup__input_type_mesto" name="cardDescription" placeholder="Название" minlength="2" maxlength="30" required>
                 <span class="popup__name-error popup__error"></span>
-                <input id="popup__link" type="url" class="popup__input popup__input_type_link" name="Link" placeholder="Ссылка на картинку" required>
+                <input id="popup__link" type="url" class="popup__input popup__input_type_link" name="cardImage" placeholder="Ссылка на картинку" required>
                 <span class="popup__link-error popup__error"></span>
                 <button type="submit" class="popup__submit popup__submit-edit" value="Сохранить" disabled>Сохранить</button>
             </form>
