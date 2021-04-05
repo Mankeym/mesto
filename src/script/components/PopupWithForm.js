@@ -10,7 +10,7 @@ export class PopupWithForm extends Popup {
         this._values = {};
         this._inputList.forEach(input => this._values[input.name] = input.value);
 
-        return this._value;
+        return this._values;
     }
 
     setEventListeners(){
@@ -23,7 +23,7 @@ export class PopupWithForm extends Popup {
     }
     close() {
         super.close()
-        const form = document.querySelector('.popup__form_edit')
+        const form = this._popup.querySelector('.popup__form')
         form.reset()
         
     }

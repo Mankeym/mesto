@@ -5,50 +5,7 @@ import {FormValidator} from '../script/components/FormValidator.js';
 import {PopupWithForm} from '../script/components/PopupWithForm.js';
 import {PopupWithImage} from '../script/components/PopupWithImage.js'
 import {UserInfo} from '../script/components/UserInfo.js'
-const profilePopupOpenButton = document.querySelector('.profile__rectangle')
-const profilePopup = document.querySelector('.profile-popup');
-const nameInput = document.querySelector('.popup__input_type_name')
-const jobInput = document.querySelector('.popup__input_type_job')
-const form = document.querySelector('.popup__form_edit')
-const openPicture = document.querySelector('.profile__button')
-const namePicture = document.querySelector('.popup__input_type_mesto')
-const jobPicture = document.querySelector('.popup__input_type_link')
-const directorsList = document.querySelector('.cards');
-const overlayEdit = document.querySelector('.overlay_edit')
-const initialCards = [
-    {
-      place: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      place: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      place: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      place: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      place: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      place: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-  ]; 
-  const valid = {
-    popupForm:'.popup__form',
-    inputSelector:'.popup__input',
-    submitButton:'.popup__submit',
-    submitButtonDisabled:'popup__submit_disabled',
-    inputErrorCon:'popup__input_type_error',
-    errorVis: 'popup__error_visible'
-}
+import * as constants from '../script/utils/constants.js'
 const openLargeImage = new PopupWithImage('.overlay_edit-picture');
 openLargeImage.setEventListeners()
 function createCard(item) {
@@ -59,28 +16,31 @@ function createCard(item) {
 }
 const usernew = new UserInfo ({usernameSelector: '.profile__title', userinfoSelector: '.profile__subtitle'});
 const cardsList = new Section({
-  items: initialCards,
+  items: constants.initialCards,
   renderer: (item) => {
     cardsList.addItem(createCard(item));
   },
 },
-  directorsList);
+  constants.directorsList);
 
 function openProfileModal() {
   const data = usernew.getUserInfo()
   formAuthor.open();
-  nameInput.value = data.username;
-  jobInput.value = data.userinfo;
+  constants.nameInput.value = data.username;
+  constants.jobInput.value = data.userinfo;
 }
 function openCardModal() {
   formAddImage.open()
-  overlayEdit.querySelector(valid.submitButton).classList.add(valid.submitButtonDisabled)
+  constants.overlayEdit.querySelector(constants.valid.submitButton).classList.add(constants.valid.submitButtonDisabled)
 }
 //Изменение данных в попапе с автором
 const formAuthor = new PopupWithForm('.profile-popup',
   {
     handleFormSubmit: (data) => {
-    usernew.setUserInfo(data);
+      console.log(data)
+    usernew.setUserInfo(constants.nameInput,constants.jobInput);
+    constants.name.value = data.username
+    constants.job.value = data.userinfo
     formAuthor.close();
     }
   });
@@ -88,18 +48,19 @@ const formAuthor = new PopupWithForm('.profile-popup',
 //Добавление карточки в попапе
 const formAddImage = new PopupWithForm('.overlay_edit',
   { 
-    handleFormSubmit: () => {
+    handleFormSubmit: (data) => {
+      console.log(data)
       const newCard ={
-        place: namePicture.value,
-        link: jobPicture.value
+        place: data.cardDescription,
+        link: data.cardImage
     }
     cardsList.addItem(createCard(newCard))
     formAddImage.close();
     }
   });
 
-  const valAuthorForm = new FormValidator(valid, profilePopup);
-  const valImageForm = new FormValidator(valid, form);
+  const valAuthorForm = new FormValidator(constants.valid, constants.profilePopup);
+  const valImageForm = new FormValidator(constants.valid, constants.form);
 
   //Добавление карочек при загрузке страницы
   cardsList.renderItems();
@@ -114,7 +75,7 @@ const formAddImage = new PopupWithForm('.overlay_edit',
   valImageForm.enableValidation();
 
 // Открытие попапа для изменения автора
-    profilePopupOpenButton.addEventListener('click', openProfileModal)
+    constants.profilePopupOpenButton.addEventListener('click', openProfileModal)
 
 // Открытие попапа для добавления картинки
-    openPicture.addEventListener('click', openCardModal);
+    constants.openPicture.addEventListener('click', openCardModal);

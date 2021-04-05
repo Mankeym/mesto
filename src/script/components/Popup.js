@@ -2,14 +2,17 @@ export class Popup {
     constructor(popupSelector){
         this._popup = document.querySelector(popupSelector)
         this._handleEscCl = this._handleEscClose.bind(this);
+        this._closeByOver = this._closeByOverlay.bind(this); 
     }
     open(){
         this._popup.classList.add('overlay_active')
         document.addEventListener('keydown', this._handleEscCl);
+        this._popup.addEventListener('click', this._closeByOver);
     }
     close(){
         this._popup.classList.remove('overlay_active')
         document.removeEventListener('keydown', this._handleEscCl);
+        this._popup.removeEventListener('click', this._closeByOver);
     }
     _handleEscClose(evt){
         if (evt.key === 'Escape') {
@@ -22,16 +25,8 @@ export class Popup {
         }
       }
     setEventListeners(){
-        const closeProfile = document.querySelector('.overlay__button-profile')
-        closeProfile.addEventListener('click', () =>{
-            this.close()
-        })
-        const closeAddImage = document.querySelector('.overlay__button_edit')
-        closeAddImage.addEventListener('click', () =>{
-            this.close()
-        })
-        const closePicture = document.querySelector('.overlay__button_edit-picture')
-        closePicture.addEventListener('click', () =>{
+        const closeButton = this._popup.querySelector('.overlay__button')
+        closeButton.addEventListener('click', () =>{
             this.close()
         })
     }

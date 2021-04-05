@@ -1,4 +1,5 @@
 
+
 export class UserInfo {
     constructor({usernameSelector, userinfoSelector}) {
         this._author = document.querySelector(usernameSelector);
@@ -13,10 +14,8 @@ export class UserInfo {
         return this._userData
     }
 
-    setUserInfo(){
-        const nameInput = document.querySelector('.popup__input_type_name')
-        const jobInput = document.querySelector('.popup__input_type_job')
-        this._author.textContent = nameInput.value
-        this._profession.textContent = jobInput.value;
+    setUserInfo(name, job){
+        this._author.textContent = name.value
+        this._profession.textContent = job.value;
     }
 }
