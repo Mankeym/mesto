@@ -1,4 +1,4 @@
-import {nameInput,jobInput} from '../../pages/constants.js'
+
 export class UserInfo {
     constructor({usernameSelector, userinfoSelector}) {
         this._author = document.querySelector(usernameSelector);
@@ -14,6 +14,8 @@ export class UserInfo {
     }
 
     setUserInfo(){
+        const nameInput = document.querySelector('.popup__input_type_name')
+        const jobInput = document.querySelector('.popup__input_type_job')
         this._author.textContent = nameInput.value
         this._profession.textContent = jobInput.value;
     }
