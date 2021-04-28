@@ -23,6 +23,7 @@ Promise.all([
     .then((result) => {
       const [userData, initialCards] = result;
       usernew.setUserInfo(userData);
+      console.log(userData)
       userID = userData._id;
       cardsList.renderItems(initialCards);
     })
@@ -95,7 +96,7 @@ function createCard(item) {
   return card.getItem();
 }
 */
-const usernew = new UserInfo ({usernameSelector: '.profile__title', userinfoSelector: '.profile__subtitle'});
+const usernew = new UserInfo ({usernameSelector: '.profile__title', userinfoSelector: '.profile__subtitle', useravatarSelector: '.profile__logo'});
 const cardsList = new Section({
   renderer: (item) => {
     const card = createCard (item,cardEl,userID, confirm, openLargeImage);
@@ -123,9 +124,9 @@ const formAuthor = new PopupWithForm('.profile-popup',
     handleFormSubmit: () => {
     const profile = {
       name: constants.nameInput.value,
-      profession: constants.jobInput.value
+      about: constants.jobInput.value
     }
-    api.editUserInfo(profile.name, profile.profession)
+    api.editUserInfo(profile.name, profile.about)
       .finally(() => {
         usernew.setUserInfo(profile);
         formAuthor.close();
@@ -192,17 +193,3 @@ const formAddImage = new PopupWithForm('.overlay_edit',
 
 // Открытие попапа для добавления картинки
     constants.openPicture.addEventListener('click', openCardModal);
-    
-    api.getAnswer()
-      .then(cards => {
-        console.log(cards)
-        cardsList.renderItems(cards);
-      })
-      .catch(err => console.log(err))
-    
-    api.getUserInfo()
-      .then((data => {
-        constants.name.textContent = data.name;
-        constants.job.textContent = data.about;
-        constants.avatar.src = data.avatar;
-      }));  
