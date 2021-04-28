@@ -13,7 +13,10 @@
     <main>
         <section class="profile">
             <div class="profile__page">
+                <div class="profile__avatar">
                 <img src="<%=require('./images/image.svg')%>" class="profile__logo" alt="Жак Ив-Кусто">
+                <button class="profile__avatar-update" type="button"></button>
+                </div>  
                 <div class="profile__info">
                     <div>
                         <h1 class="profile__title" id="heading">Жак-Ив Кусто</h1>
@@ -84,10 +87,34 @@
                 <img class="card__logo" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="Картинка">
                 <figcaption class="card__figcaption">
                     <h3 class="card__title"></h3>
-                    <button aria-label="Кнопка нравится" type="button" class="card__button">
-                    </button>
+                    <div class="card__like">
+                    <button aria-label="Кнопка нравится" type="button" class="card__button"></button>
+                    <p class="card__score">1</p>
+                    </div>
                 </figcaption>
             </figure>
         </template>
+        <section  class="overlay overlay_edit-delete">
+            <form class="popup popup__delete">
+                <h2 class="popup__title">Вы уверены?</h2>
+                <button type="submit" class="popup__submit popup__submit-delete" value="Да">Да</button>
+                <button type="button" class="overlay__button overlay__button_edit">
+                    <img class="overlay__image" src="<%=require('./images/Close.svg')%>" alt="Крест">
+                </button>
+            </form>
+        </section>
+        <section  class="overlay overlay_edit_avatar">
+            <div class="popup">
+            <h2 class="popup__title">Обновить аватар</h2>
+            <form class="popup__form popup__avatar_edit">
+                <input id="popup__link" type="url" class="popup__input popup__input_type_avatar" name="cardAvatar" placeholder="Ссылка на аватар" required>
+                <span class="popup__link-error popup__error"></span>
+                <button type="submit" class="popup__submit popup__submit-avatar" value="Да">Да</button>
+                <button type='button' class="overlay__button overlay__button_edit">
+                    <img class="overlay__image" src="<%=require('./images/Close.svg')%>" alt="Крест">
+                </button>
+            </form>
+            </div>
+        </section>
 </body>
 </html>

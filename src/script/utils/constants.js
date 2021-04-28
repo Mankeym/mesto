@@ -21,6 +21,12 @@ export const openPicture = document.querySelector('.profile__button')
 export const directorsList = document.querySelector('.cards');
 export const name = document.querySelector('.profile__title')
 export const job = document.querySelector('.profile__subtitle')
+export const avatar = document.querySelector('.profile__avatar-update')
+export const deleteTrash = document.querySelector('.card__trash')
+export const editDelete = document.querySelector('.overlay_edit-delete')
+export const cardEl = document.querySelector('.card-template')
+export const card = document.querySelector('.card')
+export const avatarProfile = document.querySelector('.popup__input_type_avatar')
 export const valid = {
     popupForm:'.popup__form',
     inputSelector:'.popup__input',

@@ -14,8 +14,8 @@ export class UserInfo {
         return this._userData
     }
 
-    setUserInfo(name, job){
-        this._author.textContent = name.value
-        this._profession.textContent = job.value;
+    setUserInfo(data){
+        this._author.textContent = data.name
+        this._profession.textContent = data.profession;
     }
 }
