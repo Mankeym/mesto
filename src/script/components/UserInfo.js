@@ -18,6 +18,6 @@ export class UserInfo {
     setUserInfo(data){
         this._author.textContent = data.name
         this._profession.textContent = data.about;
-        this._avatar.src = data.avatar;
+        this._avatar.src = data.avatar
     }
 }

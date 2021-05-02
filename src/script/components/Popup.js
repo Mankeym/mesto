@@ -24,6 +24,14 @@ export class Popup {
             this.close();
         }
       }
+    changeButtonName(name) {
+        this._oldButtonName = this._popup.querySelector('.popup__submit').textContent;
+        this._popup.querySelector('.popup__submit').textContent = name;
+    }
+
+    restoreButtonName() {
+        this._popup.querySelector('.popup__submit').textContent = this._oldButtonName;
+    }
     setEventListeners(){
         const closeButton = this._popup.querySelector('.overlay__button')
         closeButton.addEventListener('click', () =>{

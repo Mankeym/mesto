@@ -27,6 +27,8 @@ export const editDelete = document.querySelector('.overlay_edit-delete')
 export const cardEl = document.querySelector('.card-template')
 export const card = document.querySelector('.card')
 export const avatarProfile = document.querySelector('.popup__input_type_avatar')
+export const avatarUrl = document.querySelector('.profile__logo')
+export const buttonLoadingName = 'Сохранение...';
 export const valid = {
     popupForm:'.popup__form',
     inputSelector:'.popup__input',

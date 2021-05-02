@@ -49,6 +49,9 @@ function createCard (result,cardEl,userID,confirm,openLargeImage) {
               confirm.close();
             })
             .catch(err => console.log('Ошибка при удалении'))
+            .finally(() => {
+              confirm.restoreButtonName();
+            })
           }
         }
       )
@@ -124,13 +127,23 @@ const formAuthor = new PopupWithForm('.profile-popup',
     handleFormSubmit: () => {
     const profile = {
       name: constants.nameInput.value,
-      about: constants.jobInput.value
+      about: constants.jobInput.value,
+      avatar: constants.avatarUrl.src
     }
+    formAuthor.changeButtonName(constants.buttonLoadingName)
     api.editUserInfo(profile.name, profile.about)
-      .finally(() => {
+      .then(() => {
         usernew.setUserInfo(profile);
         formAuthor.close();
       })
+      .catch((err) => {
+        console.log(err); // выведем ошибку в консоль
+      })
+      .finally(
+        () => {
+          formAuthor.restoreButtonName();
+        }
+      ) 
     }
   });
 
@@ -140,6 +153,7 @@ const formAuthor = new PopupWithForm('.profile-popup',
     const profile = {
       avatar: constants.avatarProfile.value
     }
+    formAvatar.changeButtonName(constants.buttonLoadingName);
     api.editAvatar(profile.avatar)
     .then((result) =>{
         usernew.setUserInfo(result);
@@ -148,6 +162,11 @@ const formAuthor = new PopupWithForm('.profile-popup',
       .catch((err) => {
         console.log(err); // выведем ошибку в консоль
       })
+      .finally(
+        () => {
+          formAvatar.restoreButtonName()
+        }
+      ) 
     }
   });
 //Добавление карточки в попапе
@@ -158,6 +177,7 @@ const formAddImage = new PopupWithForm('.overlay_edit',
         name: constants.namePicture.value,
         link: constants.jobPicture.value
       }
+      formAddImage.changeButtonName(constants.buttonLoadingName)
       api.addCard(itemCard.name, itemCard.link)
       .then((result) =>{ 
        // cardsList.renderItems(result);
@@ -167,6 +187,14 @@ const formAddImage = new PopupWithForm('.overlay_edit',
         cardsList.addItem(cardElement);
         formAddImage.close();
       })
+      .catch((err) => {
+        console.log(err); // выведем ошибку в консоль
+      })
+      .finally(
+        () => {
+          formAddImage.restoreButtonName();
+        }
+      ) 
     }
   })
 
