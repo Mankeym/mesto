@@ -9,7 +9,7 @@ import {Api} from '../script/components/Api.js'
 import * as constants from '../script/utils/constants.js'
 import { PopupConfirm } from '../script/components/PopupConfirm.js';
 const cardEl = document.querySelector('.card-template')
-const confirm = new PopupConfirm('.overlay_edit-delete',() => {formDeleteSubmitHandler()})
+const confirm = new PopupConfirm('.overlay_edit-delete')
 const api = new Api({
   adress:'https://mesto.nomoreparties.co/v1/cohort-22',
   token:'1c933ec4-a4fc-4d43-aaf4-c9a8a8844745'
@@ -18,7 +18,7 @@ const openLargeImage = new PopupWithImage('.overlay_edit-picture');
 openLargeImage.setEventListeners()
 Promise.all([
   api.getUserInfo(),
-  api.getAnswer()
+  api.getCard()
 ])
     .then((result) => {
       const [userData, initialCards] = result;

@@ -68,7 +68,6 @@ export class Card {
         const deleteTrash = this._element.querySelector('.card__trash')
 
         deleteTrash.addEventListener('click',()=> {
-            console.log(this.handleDelete())
             this._deleteCardClick();
         })
         const cardLogo = this._element.querySelector('.card__logo')
@@ -80,6 +79,7 @@ export class Card {
         })
     }
     deleteCard (){
+      console.log(this._element)
       this._element.remove();
       this._element = null;
      }

@@ -4,7 +4,7 @@ export class Api {
         this._token = token;
     }
 
-    getAnswer(){
+    getCard(){
         return fetch(`${this._adress}/cards`,{
             headers: {
                 authorization: this._token
@@ -49,7 +49,6 @@ export class Api {
             }
             return Promise.reject(`Ошибка ${response.status}`)
         })
-        .catch(err => console.log(err));
         
             
     }
@@ -70,8 +69,7 @@ export class Api {
                 return response.json();
             }
             return Promise.reject(`Ошибка ${response.status}`)
-        })
-        .catch(err => console.log(err));    
+        }) 
     }
     deleteCard(id){
         return fetch(`${this._adress}/cards/${id}`, {

@@ -8,7 +8,6 @@ export class PopupConfirm extends Popup{
 
     handler(evt) {
         evt.preventDefault();
-        console.log(this.handler.bind(this))
         this._handleDeleteCard();
     }
 
